@@ -30,7 +30,6 @@ Thumbs.db
 !package.json
 !package-lock.json
 !tsconfig.json
-!claude-mcp-config.json
 
 # Logs
 logs
