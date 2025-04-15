@@ -1,6 +1,6 @@
 {
   "name": "mcp-search-console",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Google Search Console API tools via Model Context Protocol",
   "main": "dist/index.js",
   "bin": {
