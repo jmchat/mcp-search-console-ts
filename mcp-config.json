@@ -1,0 +1,103 @@
+{
+  "name": "google-search-console",
+  "version": "1.0.0",
+  "description": "Google Search Console API MCP Server",
+  "transport": {
+    "type": "stdio"
+  },
+  "tools": [
+    {
+      "name": "search_console_api_list_sites",
+      "description": "Lijst alle sites waarvoor de gebruiker toegang heeft."
+    },
+
+    {
+      "name": "search_console_api_list_sitemaps",
+      "description": "Lijst alle sitemaps voor een property.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" }
+        },
+        "required": ["siteUrl"]
+      }
+    },
+    {
+      "name": "search_console_api_get_sitemap",
+      "description": "Details van een specifieke sitemap.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" },
+          "feedpath": { "type": "string", "description": "Het sitemap pad (bijv. sitemap.xml)" }
+        },
+        "required": ["siteUrl", "feedpath"]
+      }
+    },
+
+    {
+      "name": "search_console_api_searchanalytics_query",
+      "description": "Haal zoekanalysegegevens op. Ondersteunt ook uursgewijze data via HOUR dimensie en HOURLY_ALL dataState.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" },
+          "requestBody": { "type": "object", "description": "Het request body object volgens de Search Analytics API. Voor uursgewijze data gebruik je dataState: 'HOURLY_ALL' en dimensions: ['HOUR']. Voorbeeld: { startDate: '2025-04-07', endDate: '2025-04-07', dataState: 'HOURLY_ALL', dimensions: ['HOUR'] }" }
+        },
+        "required": ["siteUrl", "requestBody"]
+      }
+    },
+    {
+      "name": "search_console_api_list_crawl_errors",
+      "description": "Lijst crawl errors.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" },
+          "category": { "type": "string", "description": "Foutcategorie (bijv. 'notFound')" },
+          "platform": { "type": "string", "description": "Platform (bijv. 'web')" }
+        },
+        "required": ["siteUrl", "category", "platform"]
+      }
+    },
+    {
+      "name": "search_console_api_get_crawl_error",
+      "description": "Details van een specifieke crawl error.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" },
+          "url": { "type": "string", "description": "De URL van de crawl error" },
+          "category": { "type": "string", "description": "Foutcategorie" },
+          "platform": { "type": "string", "description": "Platform" }
+        },
+        "required": ["siteUrl", "url", "category", "platform"]
+      }
+    },
+    {
+      "name": "search_console_api_mark_crawl_error_fixed",
+      "description": "Markeer een crawl error als opgelost.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" },
+          "url": { "type": "string", "description": "De URL van de crawl error" },
+          "category": { "type": "string", "description": "Foutcategorie" },
+          "platform": { "type": "string", "description": "Platform" }
+        },
+        "required": ["siteUrl", "url", "category", "platform"]
+      }
+    },
+    {
+      "name": "search_console_api_mobile_friendly_test",
+      "description": "Voer een mobile friendly test uit op een URL.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string", "description": "De te testen URL" }
+        },
+        "required": ["url"]
+      }
+    }
+  ]
+}
