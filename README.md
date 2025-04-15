@@ -1,63 +1,63 @@
 # Google Search Console MCP
 
-Een Model Context Protocol (MCP) server voor het beheren van Google Search Console properties, sitemaps en zoekanalyse.
+A Model Context Protocol (MCP) server for managing Google Search Console properties, sitemaps, and search analytics.
 
-## Installatie
+## Installation
 
 ```bash
 npm install -g mcp-search-console
 ```
 
-Of gebruik direct via npx:
+Or use directly via npx:
 
 ```bash
 npx mcp-search-console
 ```
 
-## Vereisten
+## Requirements
 
-1. Een Google Cloud project met de Search Console API geactiveerd
-2. Een service account met de juiste rechten voor Search Console
-3. Een credentials.json bestand voor het service account
+1. A Google Cloud project with the Search Console API enabled
+2. A service account with appropriate permissions for Search Console
+3. A credentials.json file for the service account
 
-## Configuratie
+## Configuration
 
-Geef het pad naar je Google service account credentials op. Dit kan op twee manieren:
+Specify the path to your Google service account credentials. This can be done in two ways:
 
-### Optie 1: Omgevingsvariabele
+### Option 1: Environment Variable
 
-Stel de `GOOGLE_APPLICATION_CREDENTIALS` variabele in:
+Set the `GOOGLE_APPLICATION_CREDENTIALS` variable:
 
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS=pad/naar/credentials.json
+export GOOGLE_APPLICATION_CREDENTIALS=path/to/credentials.json
 ```
 
-### Optie 2: .env bestand (optioneel)
+### Option 2: .env File (optional)
 
-Maak een `.env` bestand aan met:
+Create a `.env` file with:
 
 ```
-GOOGLE_APPLICATION_CREDENTIALS=pad/naar/credentials.json
+GOOGLE_APPLICATION_CREDENTIALS=path/to/credentials.json
 ```
 
-## Beschikbare functies
+## Available Functions
 
-De MCP biedt de volgende Search Console functies:
+The MCP provides the following Search Console functions:
 
 ### Sites
-- `search_console_api_list_sites` – Lijst alle sites waarvoor toegang is
+- `search_console_api_list_sites` – List all sites with access
 
 ### Sitemaps
-- `search_console_api_list_sitemaps` – Lijst alle sitemaps voor een property
-- `search_console_api_get_sitemap` – Details van een specifieke sitemap
+- `search_console_api_list_sitemaps` – List all sitemaps for a property
+- `search_console_api_get_sitemap` – Details of a specific sitemap
 
 ### Search Analytics
-- `search_console_api_searchanalytics_query` – Haal zoekanalysegegevens op
-  - Ondersteunt ook uursgewijze data (vanaf april 2025) via de `HOUR` dimensie en `HOURLY_ALL` dataState
+- `search_console_api_searchanalytics_query` – Retrieve search analytics data
+  - Also supports hourly data (from April 2025) via the `HOUR` dimension and `HOURLY_ALL` dataState
 
-#### Voorbeeld: Uursgewijze data opvragen
+#### Example: Querying Hourly Data
 
-Om uursgewijze data op te vragen, gebruik je de volgende parameters in je request:
+To query hourly data, use the following parameters in your request:
 
 ```json
 {
@@ -74,7 +74,7 @@ Om uursgewijze data op te vragen, gebruik je de volgende parameters in je reques
 }
 ```
 
-Dit geeft resultaten terug met timestamps per uur:
+This returns results with timestamps per hour:
 
 ```json
 {
@@ -93,12 +93,12 @@ Dit geeft resultaten terug met timestamps per uur:
       "ctr": 0.011389563095440307,
       "position": 9.897654321098765
     }
-    // ... meer uren
+    // ... more hours
   ]
 }
 ```
 
-Je kunt de HOUR dimensie ook combineren met andere dimensies zoals COUNTRY, DEVICE, etc.:
+You can also combine the HOUR dimension with other dimensions such as COUNTRY, DEVICE, etc.:
 
 ```json
 {
@@ -116,16 +116,16 @@ Je kunt de HOUR dimensie ook combineren met andere dimensies zoals COUNTRY, DEVI
 ```
 
 ### Crawl Errors (Legacy)
-- `search_console_api_list_crawl_errors` – Lijst crawl errors
-- `search_console_api_get_crawl_error` – Details van een specifieke crawl error
-- `search_console_api_mark_crawl_error_fixed` – Markeer als opgelost
+- `search_console_api_list_crawl_errors` – List crawl errors
+- `search_console_api_get_crawl_error` – Details of a specific crawl error
+- `search_console_api_mark_crawl_error_fixed` – Mark as fixed
 
 ### Mobile Usability
-- `search_console_api_mobile_friendly_test` – Voer een mobile friendly test uit op een URL
+- `search_console_api_mobile_friendly_test` – Run a mobile-friendly test on a URL
 
-## Gebruik met Claude
+## Using with Claude
 
-Deze MCP werkt met Claude of andere MCP Clients. Maak een `claude-mcp-config.json` aan met bijvoorbeeld:
+This MCP works with Claude or other MCP Clients. Create a `claude-mcp-config.json` with, for example:
 
 ```json
 {
