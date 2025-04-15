@@ -1,0 +1,49 @@
+{
+  "name": "mcp-search-console",
+  "version": "1.0.0",
+  "description": "Google Search Console API tools via Model Context Protocol",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-search-console": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "watch": "nodemon --exec ts-node src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "google-search-console",
+    "search-console",
+    "seo",
+    "search",
+    "mcp",
+    "model-context-protocol",
+    "sitemaps"
+  ],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmchat/mcp-search-console-ts.git"
+  },
+  "homepage": "https://github.com/jmchat/mcp-search-console-ts#readme",
+  "bugs": {
+    "url": "https://github.com/jmchat/mcp-search-console-ts/issues"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.8.0",
+    "axios": "^1.8.4",
+    "dotenv": "^16.4.7",
+    "google-auth-library": "^10.0.0-rc.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
