@@ -1,6 +1,6 @@
 {
   "name": "google-search-console",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Google Search Console API MCP Server",
   "transport": {
     "type": "stdio"
@@ -8,28 +8,28 @@
   "tools": [
     {
       "name": "search_console_api_list_sites",
-      "description": "Lijst alle sites waarvoor de gebruiker toegang heeft."
+      "description": "List all sites where the user has access."
     },
 
     {
       "name": "search_console_api_list_sitemaps",
-      "description": "Lijst alle sitemaps voor een property.",
+      "description": "List all sitemaps for a property.",
       "parameters": {
         "type": "object",
         "properties": {
-          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" }
+          "siteUrl": { "type": "string", "description": "The full URL of the site (including protocol)" }
         },
         "required": ["siteUrl"]
       }
     },
     {
       "name": "search_console_api_get_sitemap",
-      "description": "Details van een specifieke sitemap.",
+      "description": "Get details of a specific sitemap.",
       "parameters": {
         "type": "object",
         "properties": {
-          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" },
-          "feedpath": { "type": "string", "description": "Het sitemap pad (bijv. sitemap.xml)" }
+          "siteUrl": { "type": "string", "description": "The full URL of the site (including protocol)" },
+          "feedpath": { "type": "string", "description": "The sitemap path (e.g. sitemap.xml)" }
         },
         "required": ["siteUrl", "feedpath"]
       }
@@ -37,64 +37,64 @@
 
     {
       "name": "search_console_api_searchanalytics_query",
-      "description": "Haal zoekanalysegegevens op. Ondersteunt ook uursgewijze data via HOUR dimensie en HOURLY_ALL dataState.",
+      "description": "Get search analytics data. Also supports hourly data via HOUR dimension and HOURLY_ALL dataState.",
       "parameters": {
         "type": "object",
         "properties": {
-          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" },
-          "requestBody": { "type": "object", "description": "Het request body object volgens de Search Analytics API. Voor uursgewijze data gebruik je dataState: 'HOURLY_ALL' en dimensions: ['HOUR']. Voorbeeld: { startDate: '2025-04-07', endDate: '2025-04-07', dataState: 'HOURLY_ALL', dimensions: ['HOUR'] }" }
+          "siteUrl": { "type": "string", "description": "The full URL of the site (including protocol)" },
+          "requestBody": { "type": "object", "description": "The request body object according to the Search Analytics API. For hourly data use dataState: 'HOURLY_ALL' and dimensions: ['HOUR']. Example: { startDate: '2025-04-07', endDate: '2025-04-07', dataState: 'HOURLY_ALL', dimensions: ['HOUR'] }" }
         },
         "required": ["siteUrl", "requestBody"]
       }
     },
     {
       "name": "search_console_api_list_crawl_errors",
-      "description": "Lijst crawl errors.",
+      "description": "List crawl errors.",
       "parameters": {
         "type": "object",
         "properties": {
-          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" },
-          "category": { "type": "string", "description": "Foutcategorie (bijv. 'notFound')" },
-          "platform": { "type": "string", "description": "Platform (bijv. 'web')" }
+          "siteUrl": { "type": "string", "description": "The full URL of the site (including protocol)" },
+          "category": { "type": "string", "description": "Error category (e.g. 'notFound')" },
+          "platform": { "type": "string", "description": "Platform (e.g. 'web')" }
         },
         "required": ["siteUrl", "category", "platform"]
       }
     },
     {
       "name": "search_console_api_get_crawl_error",
-      "description": "Details van een specifieke crawl error.",
+      "description": "Get details of a specific crawl error.",
       "parameters": {
         "type": "object",
         "properties": {
-          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" },
-          "url": { "type": "string", "description": "De URL van de crawl error" },
-          "category": { "type": "string", "description": "Foutcategorie" },
-          "platform": { "type": "string", "description": "Platform" }
+          "siteUrl": { "type": "string", "description": "The full URL of the site (including protocol)" },
+          "url": { "type": "string", "description": "The URL of the crawl error" },
+          "category": { "type": "string", "description": "Error category (e.g. 'notFound')" },
+          "platform": { "type": "string", "description": "Platform (e.g. 'web')" }
         },
         "required": ["siteUrl", "url", "category", "platform"]
       }
     },
     {
       "name": "search_console_api_mark_crawl_error_fixed",
-      "description": "Markeer een crawl error als opgelost.",
+      "description": "Mark a crawl error as fixed.",
       "parameters": {
         "type": "object",
         "properties": {
-          "siteUrl": { "type": "string", "description": "De volledige URL van de site (inclusief protocol)" },
-          "url": { "type": "string", "description": "De URL van de crawl error" },
-          "category": { "type": "string", "description": "Foutcategorie" },
-          "platform": { "type": "string", "description": "Platform" }
+          "siteUrl": { "type": "string", "description": "The full URL of the site (including protocol)" },
+          "url": { "type": "string", "description": "The URL of the crawl error" },
+          "category": { "type": "string", "description": "Error category (e.g. 'notFound')" },
+          "platform": { "type": "string", "description": "Platform (e.g. 'web')" }
         },
         "required": ["siteUrl", "url", "category", "platform"]
       }
     },
     {
       "name": "search_console_api_mobile_friendly_test",
-      "description": "Voer een mobile friendly test uit op een URL.",
+      "description": "Run a mobile-friendly test on a URL.",
       "parameters": {
         "type": "object",
         "properties": {
-          "url": { "type": "string", "description": "De te testen URL" }
+          "url": { "type": "string", "description": "The URL to test" }
         },
         "required": ["url"]
       }

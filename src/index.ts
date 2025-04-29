@@ -119,9 +119,9 @@ server.tool(
 
 server.tool(
     "search_console_api_list_sitemaps",
-    "Lijst alle sitemaps voor een property.",
+    "List all sitemaps for a property.",
     {
-        siteUrl: z.string().describe("De volledige URL van de site (inclusief protocol)")
+        siteUrl: z.string().describe("The full URL of the site (including protocol)")
     },
     async ({ siteUrl }): Promise<CallToolResult> => {
         console.error(`Running tool: search_console_api_list_sitemaps for ${siteUrl}`);
@@ -146,10 +146,10 @@ server.tool(
 
 server.tool(
     "search_console_api_get_sitemap",
-    "Details van een specifieke sitemap.",
+    "Get details of a specific sitemap.",
     {
-        siteUrl: z.string().describe("De volledige URL van de site (inclusief protocol)"),
-        feedpath: z.string().describe("Het sitemap pad (bijv. sitemap.xml)")
+        siteUrl: z.string().describe("The full URL of the site (including protocol)"),
+        feedpath: z.string().describe("The sitemap path (e.g. sitemap.xml)")
     },
     async ({ siteUrl, feedpath }): Promise<CallToolResult> => {
         console.error(`Running tool: search_console_api_get_sitemap for ${siteUrl} / ${feedpath}`);
@@ -174,10 +174,10 @@ server.tool(
 
 server.tool(
     "search_console_api_searchanalytics_query",
-    "Haal zoekanalysegegevens op. Ondersteunt ook uursgewijze data via HOUR dimensie en HOURLY_ALL dataState.",
+    "Get search analytics data. Also supports hourly data via HOUR dimension and HOURLY_ALL dataState.",
     {
-        siteUrl: z.string().describe("De volledige URL van de site (inclusief protocol)"),
-        requestBody: z.any().describe("Het request body object volgens de Search Analytics API.")
+        siteUrl: z.string().describe("The full URL of the site (including protocol)"),
+        requestBody: z.any().describe("The request body object according to the Search Analytics API.")
     },
     async ({ siteUrl, requestBody }): Promise<CallToolResult> => {
         console.error(`Running tool: search_console_api_searchanalytics_query for ${siteUrl}`);
@@ -202,11 +202,11 @@ server.tool(
 
 server.tool(
     "search_console_api_list_crawl_errors",
-    "Lijst crawl errors.",
+    "List crawl errors.",
     {
-        siteUrl: z.string().describe("De volledige URL van de site (inclusief protocol)"),
-        category: z.string().describe("Foutcategorie (bijv. 'notFound')"),
-        platform: z.string().describe("Platform (bijv. 'web')")
+        siteUrl: z.string().describe("The full URL of the site (including protocol)"),
+        category: z.string().describe("Error category (e.g. 'notFound')"),
+        platform: z.string().describe("Platform (e.g. 'web')")
     },
     async ({ siteUrl, category, platform }): Promise<CallToolResult> => {
         console.error(`Running tool: search_console_api_list_crawl_errors for ${siteUrl}, category: ${category}, platform: ${platform}`);
@@ -235,12 +235,12 @@ server.tool(
 
 server.tool(
     "search_console_api_get_crawl_error",
-    "Details van een specifieke crawl error.",
+    "Get details of a specific crawl error.",
     {
-        siteUrl: z.string().describe("De volledige URL van de site (inclusief protocol)"),
-        url: z.string().describe("De URL van de crawl error"),
-        category: z.string().describe("Foutcategorie"),
-        platform: z.string().describe("Platform")
+        siteUrl: z.string().describe("The full URL of the site (including protocol)"),
+        url: z.string().describe("The URL of the crawl error"),
+        category: z.string().describe("Error category (e.g. 'notFound')"),
+        platform: z.string().describe("Platform (e.g. 'web')")
     },
     async ({ siteUrl, url, category, platform }): Promise<CallToolResult> => {
         console.error(`Running tool: search_console_api_get_crawl_error for ${siteUrl}, url: ${url}`);
@@ -269,12 +269,12 @@ server.tool(
 
 server.tool(
     "search_console_api_mark_crawl_error_fixed",
-    "Markeer een crawl error als opgelost.",
+    "Mark a crawl error as fixed.",
     {
-        siteUrl: z.string().describe("De volledige URL van de site (inclusief protocol)"),
-        url: z.string().describe("De URL van de crawl error"),
-        category: z.string().describe("Foutcategorie"),
-        platform: z.string().describe("Platform")
+        siteUrl: z.string().describe("The full URL of the site (including protocol)"),
+        url: z.string().describe("The URL of the crawl error"),
+        category: z.string().describe("Error category (e.g. 'notFound')"),
+        platform: z.string().describe("Platform (e.g. 'web')")
     },
     async ({ siteUrl, url, category, platform }): Promise<CallToolResult> => {
         console.error(`Running tool: search_console_api_mark_crawl_error_fixed for ${siteUrl}, url: ${url}`);
@@ -303,9 +303,9 @@ server.tool(
 
 server.tool(
     "search_console_api_mobile_friendly_test",
-    "Voer een mobile friendly test uit op een URL.",
+    "Run a mobile-friendly test on a URL.",
     {
-        url: z.string().describe("De te testen URL")
+        url: z.string().describe("The URL to test")
     },
     async ({ url }): Promise<CallToolResult> => {
         console.error(`Running tool: search_console_api_mobile_friendly_test for ${url}`);
@@ -330,15 +330,15 @@ server.tool(
     }
 );
 
-// --- Start de MCP server ---
+// --- Start MCP server ---
 async function main() {
     try {
-        log("MCP server starten met stdio transport...");
+        log("Starting MCP server with stdio transport...");
         const transport = new StdioServerTransport();
         await server.connect(transport);
-        log("✅ MCP server gestart");
+        log("✅ MCP server started");
     } catch (error) {
-        log(`❌ Error starting server: ${error}`);
+        log(`❌ Error starting MCP server: ${error}`);
         process.exit(1);
     }
 }
